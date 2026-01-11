@@ -19,6 +19,12 @@ if($result) {
 }
 ?>
 
+<?php
+// Check if this is an AJAX request
+$isAjax = isset($_GET['ajax']);
+?>
+
+<?php if(!$isAjax): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,6 +105,8 @@ if($result) {
 
         <!-- Main Content Area -->
         <div class="main-content">
+<?php endif; ?>
+
             <div class="content-header">
                 <h1>Supplier Management</h1>
                 <p>Manage your suppliers, add new vendors, and update supplier information.</p>
@@ -195,5 +203,8 @@ if($result) {
     </div>
         </div>
     </div>
+
+<?php if(!$isAjax): ?>
 </body>
 </html>
+<?php endif; ?>

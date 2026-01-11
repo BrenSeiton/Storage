@@ -28,8 +28,12 @@ $result = $connection->query($query);
 if(!$result){
     die("Query failed: " . $connection->error);
 }
+
+// Check if this is an AJAX request
+$isAjax = isset($_GET['ajax']);
 ?>
 
+<?php if(!$isAjax): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,6 +120,8 @@ if(!$result){
 
         <!-- Main Content Area -->
         <div class="main-content">
+<?php endif; ?>
+
             <div class="content-header">
                 <h1>Product Management</h1>
                 <p>Manage your inventory items, add new products, and update stock levels</p>
@@ -178,7 +184,10 @@ if(!$result){
                     </tbody>
                 </table>
             </div>
+
+<?php if(!$isAjax): ?>
         </div>
     </div>
 </body>
 </html>
+<?php endif; ?>

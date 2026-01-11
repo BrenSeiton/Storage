@@ -83,6 +83,12 @@ $transactions = $connection->query("
 ");
 ?>
 
+<?php
+// Check if this is an AJAX request
+$isAjax = isset($_GET['ajax']);
+?>
+
+<?php if(!$isAjax): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -163,6 +169,8 @@ $transactions = $connection->query("
 
         <!-- Main Content Area -->
         <div class="main-content">
+<?php endif; ?>
+
             <div class="content-header">
                 <h1>Sales & Transactions</h1>
                 <p>Record sales, purchases, and returns. Monitor transaction history.</p>
@@ -274,7 +282,10 @@ $transactions = $connection->query("
         </table>
     </div>
     </div>
+
+<?php if(!$isAjax): ?>
         </div>
     </div>
 </body>
 </html>
+<?php endif; ?>

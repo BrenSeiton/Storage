@@ -51,6 +51,7 @@ if(isset($_SESSION['admin_authenticated'])) {
     <title>Dashboard - Storage Inventory</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <div class="dashboard-layout">

@@ -136,6 +136,12 @@ if($inventory_result) {
 }
 ?>
 
+<?php
+// Check if this is an AJAX request
+$isAjax = isset($_GET['ajax']);
+?>
+
+<?php if(!$isAjax): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -216,6 +222,8 @@ if($inventory_result) {
 
         <!-- Main Content Area -->
         <div class="main-content">
+<?php endif; ?>
+
             <div class="content-header">
                 <h1>Reports & Analytics</h1>
                 <p>Generate comprehensive reports and analyze your inventory data.</p>
@@ -480,7 +488,9 @@ if($inventory_result) {
     </div>
 </div>
 
+<?php if(!$isAjax): ?>
         </div>
     </div>
 </body>
 </html>
+<?php endif; ?>

@@ -52,6 +52,12 @@ if(isset($_POST['update_stock'])) {
 }
 ?>
 
+<?php
+// Check if this is an AJAX request
+$isAjax = isset($_GET['ajax']);
+?>
+
+<?php if(!$isAjax): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,6 +139,8 @@ if(isset($_POST['update_stock'])) {
 
         <!-- Main Content Area -->
         <div class="main-content">
+<?php endif; ?>
+
             <div class="content-header">
                 <h1>Barcode Scanner</h1>
                 <p>Scan product barcodes to quickly access and update inventory information.</p>
@@ -239,6 +247,7 @@ if(isset($_POST['update_stock'])) {
     </div>
     <?php endif; ?>
 
+<?php if(!$isAjax): ?>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const startButton = document.getElementById('start-scan');
@@ -329,3 +338,4 @@ if(isset($_POST['update_stock'])) {
     </script>
 </body>
 </html>
+<?php endif; ?>

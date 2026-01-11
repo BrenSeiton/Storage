@@ -81,6 +81,12 @@ $value_result = $connection->query($value_query);
 $total_value = $value_result->fetch_assoc()['total_value'] ?? 0;
 ?>
 
+<?php
+// Check if this is an AJAX request
+$isAjax = isset($_GET['ajax']);
+?>
+
+<?php if(!$isAjax): ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,6 +167,7 @@ $total_value = $value_result->fetch_assoc()['total_value'] ?? 0;
 
         <!-- Main Content Area -->
         <div class="main-content">
+<?php endif; ?>
             <div class="content-header">
                 <h1>Inventory Monitoring</h1>
                 <p>Monitor stock levels, track low inventory items, and manage stock thresholds.</p>
@@ -391,7 +398,10 @@ $total_value = $value_result->fetch_assoc()['total_value'] ?? 0;
         </table>
     </div>
     </div>
+
+<?php if(!$isAjax): ?>
         </div>
     </div>
 </body>
 </html>
+<?php endif; ?>
