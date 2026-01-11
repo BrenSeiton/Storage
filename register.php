@@ -4,7 +4,10 @@ include 'database.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 $fullname = $_POST['fullname'];
-$role = $_POST['role'];
+
+// Security fix: All new users register as "Staff" by default
+// Only admins can change user roles through the user management interface
+$role = 'Staff';
 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 

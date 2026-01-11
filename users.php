@@ -2,8 +2,8 @@
 include 'database.php';
 session_start();
 
-if($_SESSION['role'] != 'Admin'){
-    echo "Access Denied!";
+if($_SESSION['role'] != 'Admin' && !isset($_SESSION['admin_authenticated'])){
+    echo "Access Denied! Admin privileges required.";
     exit();
 }
 

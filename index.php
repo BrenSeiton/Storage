@@ -1,42 +1,77 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Admin Login</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-        <h1>Inventory Management Dashboard </h1>
-        <div id="form"class="container">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Inventory Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <i class="fas fa-warehouse"></i>
+        <h1>Storage Inventory System</h1>
+        <p>Professional Inventory Management Solution</p>
+    </div>
 
+    <div id="form" class="container">
+        <div class="welcome-content">
+            <i class="fas fa-boxes welcome-icon"></i>
+            <h2>Welcome to Your Inventory Hub</h2>
+            <p>Manage your products, track inventory, and streamline operations with ease.</p>
         </div>
-        <div class="container">
+    </div>
 
-            <button onclick="loadloginform()">Go to Login</button>
-            <button onclick="loadregisterform()">Go to register a member</button>
-
-        </div>
-    </body> 
+    <div class="container nav-buttons">
+        <button onclick="loadloginform()" class="login-btn">
+            <i class="fas fa-sign-in-alt"></i>
+            Login to Dashboard
+        </button>
+        <button onclick="loadregisterform()" class="register-btn">
+            <i class="fas fa-user-plus"></i>
+            Register New Staff
+        </button>
+    </div>
 
     <script>
-        function loadloginform(){
-
-            //newbie code ko ja idk i like this whahhaha pero iiba to after redesign
-            // i literally placed the whole form ridya whahaha
-
-            //basically the div nam may id form will be replaced by this whole html snippet
-            //ja here is the form sa login just take note kng name='' kay amu ra ang i transfer sa query karun basically 'username' kun ano input na, pwede ta itransfer sa php variable $username then butang sa query. daw si name= ang makaput kng gin input mo
-            document.getElementById("form").innerHTML = '<h1>Log In</h1><br/><form action="login.php" method="post"><input type="text" name="username" placeholder="Username" required><br/><input type="password" name="password" placeholder="Password" required><br><button type="submit">Login</button></form><br><br>';
-
+        function loadloginform() {
+            const formContainer = document.getElementById("form");
+            formContainer.innerHTML = `
+                <div class="fade-in">
+                    <i class="fas fa-lock login-icon"></i>
+                    <h1>Secure Login</h1>
+                    <form action="login.php" method="post">
+                        <input type="text" name="username" placeholder="Enter Username" required>
+                        <input type="password" name="password" placeholder="Enter Password" required>
+                        <button type="submit">
+                            <i class="fas fa-arrow-right"></i>
+                            Login
+                        </button>
+                    </form>
+                </div>
+            `;
         }
-        function loadregisterform(){
-            //ja add member yknow
-            document.getElementById("form").innerHTML = '<h1>Register</h1><br/><form action="register.php" method="post"><input type="text" name="fullname" placeholder="FullName" required><br/><input type="text" name="username" placeholder="Username" required><br/><input type="password" name="password" placeholder="Password" required><br>  <p> select  role:</p> <input type="radio" id="staff" name="role" value="Staff" required> <label for="staff">Staff</label><br> <input type="radio" id="admin" name="role" value="Admin" required> <label for="admin">Admin</label><br> <input type="radio" id="cashier" name="role" value="Cashier" required> <label for="cashier">Cashier</label><br><button type="submit">Register</button></form><br><br>';
 
+        function loadregisterform() {
+            const formContainer = document.getElementById("form");
+            formContainer.innerHTML = `
+                <div class="fade-in">
+                    <i class="fas fa-user-plus register-icon"></i>
+                    <h1>Register New Staff</h1>
+                    <p><em><i class="fas fa-info-circle"></i> Note: New accounts are created as "Staff" role. Only administrators can change user roles.</em></p>
+                    <form action="register.php" method="post">
+                        <input type="text" name="fullname" placeholder="Full Name" required>
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="password" name="password" placeholder="Create Password" required>
+                        <button type="submit">
+                            <i class="fas fa-check"></i>
+                            Register Staff Account
+                        </button>
+                    </form>
+                </div>
+            `;
         }
-
-
-
     </script>
-
+</body>
 </html>
